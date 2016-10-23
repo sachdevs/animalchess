@@ -3,8 +3,6 @@ var b = jsboard.board({attach:"game", size:"9x7"});
 b.cell("each").style({width:"60px", height:"60px", background: '#d8d8d8'});
 colorBoard(b);
 
-
-
 function colorBoard(b) {
     // Color water
     b.cell([3, 1]).style({'background': '#c4daff'}); // [N, M] N down, M across
@@ -33,10 +31,60 @@ function colorBoard(b) {
     b.cell([7, 3]).style({'background': '#c66865'});
 }
 
+// load pieces into memory
 
-// setup pieces
-var knight = jsboard.piece({text:"WK", textIndent:"-9999px", background:"url('images/r_rat.png') no-repeat", width:"50px", height:"50px", margin:"0 auto" });
-b.cell([7,1]).place(knight);
+// red 
+var r_cat = jsboard.piece({text:"r_cat", textIndent:"-9999px", background:"url('images/r_cat.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var r_dog = jsboard.piece({text:"r_dog", textIndent:"-9999px", background:"url('images/r_dog.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var r_elephant = jsboard.piece({text:"r_elephant", textIndent:"-9999px", background:"url('images/r_elephant.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var r_leopard = jsboard.piece({text:"r_leopard", textIndent:"-9999px", background:"url('images/r_leopard.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var r_lion = jsboard.piece({text:"r_lion", textIndent:"-9999px", background:"url('images/r_lion.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var r_rat = jsboard.piece({text:"r_rat", textIndent:"-9999px", background:"url('images/r_rat.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var r_tiger = jsboard.piece({text:"r_tiger", textIndent:"-9999px", background:"url('images/r_tiger.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var r_wolf = jsboard.piece({text:"r_wolf", textIndent:"-9999px", background:"url('images/r_wolf.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+
+// blue
+var b_cat = jsboard.piece({text:"b_cat", textIndent:"-9999px", background:"url('images/b_cat.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var b_dog = jsboard.piece({text:"b_dog", textIndent:"-9999px", background:"url('images/b_dog.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var b_elephant = jsboard.piece({text:"b_elephant", textIndent:"-9999px", background:"url('images/b_elephant.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var b_leopard = jsboard.piece({text:"b_leopard", textIndent:"-9999px", background:"url('images/b_leopard.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var b_lion = jsboard.piece({text:"b_lion", textIndent:"-9999px", background:"url('images/b_lion.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var b_rat = jsboard.piece({text:"b_rat", textIndent:"-9999px", background:"url('images/b_rat.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var b_tiger = jsboard.piece({text:"b_tiger", textIndent:"-9999px", background:"url('images/b_tiger.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+var b_wolf = jsboard.piece({text:"b_wolf", textIndent:"-9999px", background:"url('images/b_wolf.png') no-repeat", 'background-size': 'contain', width:"60px", height:"60px", margin:"0 auto" });
+
+var r_pieces = [
+    r_cat.clone(),
+    r_dog.clone(),
+    r_elephant.clone(),
+    r_leopard.clone(),
+    r_lion.clone(),
+    r_rat.clone(),
+    r_tiger.clone(),
+    r_wolf.clone()
+];
+
+var b_pieces = [
+    b_cat.clone(),
+    b_dog.clone(),
+    b_elephant.clone(),
+    b_leopard.clone(),
+    b_lion.clone(),
+    b_rat.clone(),
+    b_tiger.clone(),
+    b_wolf.clone()
+];
+
+// place pieces
+b.cell([6,0]).place(r_pieces[2]); b.cell([2,6]).place(b_pieces[2]);
+b.cell([6,2]).place(r_pieces[7]); b.cell([2,4]).place(b_pieces[7]);
+b.cell([6,4]).place(r_pieces[3]); b.cell([2,2]).place(b_pieces[3]);
+b.cell([6,6]).place(r_pieces[5]); b.cell([2,0]).place(b_pieces[5]);
+b.cell([7,1]).place(r_pieces[0]); b.cell([1,5]).place(b_pieces[0]);
+b.cell([7,5]).place(r_pieces[1]); b.cell([1,1]).place(b_pieces[1]);
+b.cell([8,0]).place(r_pieces[6]); b.cell([0,6]).place(b_pieces[6]);
+b.cell([8,6]).place(r_pieces[4]); b.cell([0,0]).place(b_pieces[4]);
+
 // var bishop = jsboard.piece({text:"WB", textIndent:"-9999px", background:"url('images/chess/bishop.png') no-repeat", width:"50px", height:"50px", margin:"0 auto" });
 // var rook   = jsboard.piece({text:"WR", textIndent:"-9999px", background:"url('images/chess/rook.png') no-repeat", width:"50px", height:"50px", margin:"0 auto" });
 // var queen  = jsboard.piece({text:"WQ", textIndent:"-9999px", background:"url('images/chess/queen.png') no-repeat", width:"50px", height:"50px", margin:"0 auto" });
