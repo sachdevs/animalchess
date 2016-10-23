@@ -104,20 +104,16 @@ var bindMoveLocs, bindMovePiece;
 var pieces = b_pieces.concat(r_pieces);
 
 // give functionality to pieces
-for (var i=0; i<pieces.length; i++) 
-    pieces[i].addEventListener("click", function() { showMoves(this); });
+for (var i=0; i<r_pieces.length; i++) {
+    r_pieces[i].addEventListener("click", function() { showMoves(this); });
+    b_pieces[i].addEventListener("click", function() { removeOccupant(this); });
+}
 
 // show new locations 
 function showMoves(piece) {
 
     resetBoard();
 
-    // parentNode is needed because the piece you are clicking 
-    // on doesn't have access to cell functions, therefore you 
-    // need to access the parent of the piece because pieces are 
-    // always contained within in cells
-
-    // piece clicked on will be either: WK, WB, WR, WQ, WG, WP
     var thisPiece = b.cell(piece.parentNode).get();
     var loc = b.cell(piece.parentNode).where();
     var newLocs = [];
@@ -126,17 +122,6 @@ function showMoves(piece) {
         [loc[0]-1,loc[1]],   [loc[0]+1,loc[1]],
         [loc[0],loc[1]-1],   [loc[0],loc[1]+1]
         );
-    // console.log(newLocs);
-
-    // // remove illegal moves by checking 
-    // // content of b.cell().get()
-    // (function removeIllegalMoves(arr) {
-    //     var fixedLocs = [];
-    //     for (var i=0; i<arr.length; i++) 
-    //         if (b.cell(arr[i]).get()==null)
-    //             fixedLocs.push(arr[i]); 
-    //     newLocs = fixedLocs;
-    // })(newLocs); 
 
     // bind green spaces to movement of piece
     bindMoveLocs = newLocs.slice();
@@ -180,7 +165,11 @@ function resetBoard() {
     }
 }
 
-// invert moves
+function removeOccupant(piece) {
+    b.cell(piece.parentNode).rid();
+}
+
+// invert moves for opp events
 function flipLocs(loc) {
     return [8-loc[0], 6-loc[1]];
 }
